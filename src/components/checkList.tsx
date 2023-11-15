@@ -9,7 +9,7 @@ import ListItemText from "@mui/material/ListItemText";
 import Collapse from "@mui/material/Collapse";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
-import listIcon from "../assets/list-icon.png";
+import listIcon from "../assets/list-icon.svg";
 import ListItems from "./listItems";
 
 type ItemProps = {
@@ -32,14 +32,14 @@ type CheckListProps = {
 function CheckList({
   checklists,
   updateItemStatus,
-  addItemToChecklist,
+  addItemToChecklist
 }: CheckListProps) {
   const [openStates, setOpenStates] = useState(
     Array(checklists.length).fill(true)
   );
 
   const handleClick = (checklistIndex: number) => {
-    setOpenStates((prevOpenStates) => {
+    setOpenStates(prevOpenStates => {
       const newOpenStates = [...prevOpenStates];
       newOpenStates[checklistIndex] = !newOpenStates[checklistIndex];
       return newOpenStates;
@@ -74,7 +74,7 @@ function CheckList({
                   display: "flex",
                   alignItems: "center",
                   textAlign: "left",
-                  fontWeight: 400,
+                  fontWeight: 400
                 }}
               >
                 <ListItemIcon>

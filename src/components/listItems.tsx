@@ -6,7 +6,7 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Checkbox from "@mui/material/Checkbox";
-import hiddenBoxIcon from "../assets/hiddenBoxIcon.png";
+import hiddenBoxIcon from "../assets/hiddenBoxIcon.svg";
 import doneBoxIcon from "../assets/doneBoxIcon.png";
 import addBoxIcon from "../assets/addBoxIcon.png";
 import AddItemModal from "./addItemModal";
@@ -28,7 +28,7 @@ function ListItems({
   checklistIndex,
   items,
   updateItemStatus,
-  addItemToChecklist,
+  addItemToChecklist
 }: ListItemsProps) {
   const [showModal, setShowModal] = useState(false);
 
@@ -37,7 +37,7 @@ function ListItems({
   }
 
   const handleToggle = async (itemName: string) => {
-    const index = items.findIndex((item) => item.name === itemName);
+    const index = items.findIndex(item => item.name === itemName);
     const itemStatus =
       items[index].status === "in progress" ? "completed" : "in progress";
 
@@ -46,14 +46,29 @@ function ListItems({
 
   return (
     <Box>
-      {items.map((item) => (
+      {items.map(item => (
         <Box key={item.name}>
           <ListItemButton sx={{ paddingBlock: 0, marginBlock: 0 }}>
             <ListItemIcon>
               <Checkbox
+                style={{ marginLeft: "-9px" }}
                 edge="start"
-                icon={<img src={hiddenBoxIcon} alt="hiddenBox" />}
-                checkedIcon={<img src={doneBoxIcon} alt="doneBox" />}
+                icon={
+                  <img
+                    src={hiddenBoxIcon}
+                    alt="hiddenBox"
+                    width="30px"
+                    height="30px"
+                  />
+                }
+                checkedIcon={
+                  <img
+                    src={doneBoxIcon}
+                    alt="doneBox"
+                    width="30px"
+                    height="30px"
+                  />
+                }
                 checked={item.status === "completed" || false}
                 onClick={() => handleToggle(item.name)}
               />
@@ -68,7 +83,7 @@ function ListItems({
                 <div
                   style={{
                     display: "flex",
-                    alignItems: "center",
+                    alignItems: "center"
                   }}
                 >
                   <CircleIcon
@@ -76,7 +91,7 @@ function ListItems({
                       color:
                         item.status === "completed" ? "#58E766" : "#FFBE3F",
                       fontSize: "12px",
-                      marginRight: "6px",
+                      marginRight: "6px"
                     }}
                   />
                   <Typography color={"#CFCFCF"} fontSize={"12px"}>
@@ -93,7 +108,7 @@ function ListItems({
         sx={{ borderTop: "1px solid #D3D3D3" }}
       >
         <ListItemIcon>
-          <img src={addBoxIcon} alt="addBox" />
+          <img src={addBoxIcon} alt="addBox" width="30px" height="30px" />
         </ListItemIcon>
         <ListItemText
           primary={
